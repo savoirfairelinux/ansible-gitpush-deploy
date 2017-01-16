@@ -1,0 +1,15 @@
+---
+# Path of the bare repo we push to
+gitpush_repo_path: ''
+
+# Path of the workdir we checkout our pushes to
+gitpush_workdir_path: ''
+
+# Owner/group of our git repo and workdir
+gitpush_owner: root
+gitpush_group: root
+
+# Path of the repo to push. This is a path *local* to the control machine.
+# This should either be an absolute path or a path relative to {{ playbook_dir }}.
+# Also, this is a path to the *.git* folder, so your path should normally end with "/.git".
+gitpush_local_repo_path: ''

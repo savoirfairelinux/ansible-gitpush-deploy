@@ -1,0 +1,4 @@
+---
+- include: packages.yml
+- include: repoconf.yml
+- include: push.yml

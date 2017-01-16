@@ -1,0 +1,22 @@
+---
+- name: Ensure that our repo and work dirs exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ gitpush_owner }}"
+    group: "{{ gitpush_group }}"
+    mode: u=rwx,g=rwx,o=
+  with_items:
+    - "{{ gitpush_repo_path }}"
+    - "{{ gitpush_workdir_path }}"
+
+- name: Create the bare repo
+  command: "git init --bare \"{{ gitpush_repo_path }}\""
+
+- name: Creating the post-receive hook
+  template:
+    src: post-receive.j2
+    dest: "{{ gitpush_repo_path }}/hooks/post-receive"
+    owner: "{{ gitpush_owner }}"
+    group: "{{ gitpush_group }}"
+    mode: u=rwx,g=rwx,o=
