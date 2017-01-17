@@ -31,8 +31,6 @@ options.
       gitpush_local_repo_path: gitrepos/myproject/.git
       gitpush_repo_path: /opt/myproject/gitrepo
       gitpush_workdir_path: /opt/myproject/www
-      gitpush_owner: myproject_user
-      gitpush_group: www-data
 ```
 
 Mandatory variables are:
@@ -40,5 +38,9 @@ Mandatory variables are:
 * `gitpush_local_repo_path`
 * `gitpush_repo_path`
 * `gitpush_workdir_path`
+
+### Repo and workdir ownership
+
+To avoid permission errors, you should properly `become` when calling this role.
 
 [gitpush-deployment-article]: http://krisjordan.com/essays/setting-up-push-to-deploy-with-git
