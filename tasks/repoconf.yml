@@ -1,12 +1,4 @@
 ---
-- name: Ensure that our repo and work dirs exist
-  file:
-    path: "{{ item }}"
-    state: directory
-  with_items:
-    - "{{ gitpush_repo_path }}"
-    - "{{ gitpush_workdir_path }}"
-
 - name: Create the bare repo
   command: "git init --bare \"{{ gitpush_repo_path }}\""
 

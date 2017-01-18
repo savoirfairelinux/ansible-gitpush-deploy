@@ -1,0 +1,13 @@
+---
+- name: Ensure that our repo and work dirs exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ gitpush_owner|default(omit) }}"
+    group: "{{ gitpush_group|default(omit) }}"
+    recurse: yes
+  with_items:
+    - "{{ gitpush_repo_path }}"
+    - "{{ gitpush_workdir_path }}"
+
+

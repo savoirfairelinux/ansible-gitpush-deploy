@@ -1,4 +1,8 @@
 ---
 - include: packages.yml
+# First, we call dirs.yml to ensure that our base dirs exist
+- include: dirs.yml
 - include: repoconf.yml
 - include: push.yml
+# Then, we call dirs.yml again to ensure that they have proper ownership
+- include: dirs.yml

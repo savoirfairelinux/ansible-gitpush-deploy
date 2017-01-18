@@ -9,3 +9,11 @@ gitpush_workdir_path: ''
 # This should either be an absolute path or a path relative to {{ playbook_dir }}.
 # Also, this is a path to the *.git* folder, so your path should normally end with "/.git".
 gitpush_local_repo_path: ''
+
+# If at one or both of the variables below are set, we will chown the git repo and workdir after
+# each push to make sure that their contents belong to the right owner/group. If you're running
+# this role as an unprivileged user, chown isn't going to work but chgrp will *if* your user
+# is part of the group you're chgrp-ing to. So make sure of that.
+
+# gitpush_owner: undefined
+# gitpush_group: undefined
