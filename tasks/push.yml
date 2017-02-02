@@ -4,3 +4,22 @@
   # We never use "become" on this local action because we're on the control machine and become_user
   # is probably a user that doesn't exist!
   become: no
+
+# Steps below are to ensure that our git repo has the proper owner. If we run this role as "become",
+# the push step above will not be done as the proper user and will result in incorrect ownership of
+# the repo.
+#
+# Our trick here is to run "whoami" and see if it's the same user as ansible_user. If it's not,
+# then we're under "become" and we need to chown. We suppose that we become from a superuser and
+# that we have the right to perform that chowning.
+- name: whoami?
+  command: whoami
+  register: whoami_result
+  changed_when: no
+
+- name: Fix repo permissions
+  file:
+    path: "{{ gitpush_repo_path }}"
+    owner: "{{ whoami_result.stdout }}"
+  when: whoami_result.stdout != ansible_user
+
