@@ -19,7 +19,11 @@
 
 - name: Fix repo permissions
   file:
-    path: "{{ gitpush_repo_path }}"
+    path: "{{ item }}"
     owner: "{{ whoami_result.stdout }}"
+  with_items:
+    - "{{ gitpush_repo_path }}"
+    - "{{ gitpush_workdir_path }}"
+
   when: whoami_result.stdout != ansible_user
 
