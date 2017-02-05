@@ -7,8 +7,14 @@
     - "{{ gitpush_repo_path }}"
     - "{{ gitpush_workdir_path }}"
 
+- name: Is our repo created?
+  stat:
+    path: "{{ gitpush_repo_path }}/objects"
+  register: gitpush_repo_stat
+
 - name: Create the bare repo
   command: "git init --bare \"{{ gitpush_repo_path }}\""
+  when: not gitpush_repo_stat.stat.exists
 
 - name: Creating the post-receive hook
   template:

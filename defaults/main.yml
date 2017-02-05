@@ -9,3 +9,8 @@ gitpush_workdir_path: ''
 # This should either be an absolute path or a path relative to {{ playbook_dir }}.
 # Also, this is a path to the *.git* folder, so your path should normally end with "/.git".
 gitpush_local_repo_path: ''
+
+# if set, the path to touch after each push. That path will be touched with "-r gitpush_repo_path"
+# which means that its mtime will be kept in sync with our git repo's mtime.
+# Use this option if you have some kind of "touch-reload" mechanism on your app.
+gitpush_touch_path: ''

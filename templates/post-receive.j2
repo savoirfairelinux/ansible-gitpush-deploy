@@ -1,2 +1,5 @@
 #!/bin/sh
 git --work-tree="{{ gitpush_workdir_path }}" --git-dir="{{ gitpush_repo_path }}" checkout -f
+{% if gitpush_touch_path != '' %}
+touch -r "{{ gitpush_repo_path }}" "{{ gitpush_touch_path }}"
+{% endif %}
