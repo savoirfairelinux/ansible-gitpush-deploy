@@ -31,10 +31,9 @@ options.
   roles:
     - role: gitpush-deploy
       gitpush_local_repo_path: gitrepos/myproject/.git
-      gitpush_repo_path: /opt/myproject/gitrepo
-      gitpush_workdir_path: /opt/myproject/www
-      become: yes
-      become_user: myproject_user
+      gitpush_repo_path: /opt/myproject/.git/
+      gitpush_workdir_path: /opt/myproject/
+      gitpush_remote_user: myproject_user
 ```
 
 Mandatory variables are:
