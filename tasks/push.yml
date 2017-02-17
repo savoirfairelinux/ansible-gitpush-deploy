@@ -8,6 +8,8 @@
 
 - name: Push that repo!
   local_action: "command git --git-dir=\"{{ playbook_dir }}/{{ gitpush_local_repo_path }}\" push \"{{ ansible_user }}@{{ gitpush_host }}:{{ gitpush_repo_path }}\" HEAD:master"
+  changed_when: response.stderr != "Everything up-to-date"
+  register: response
   # We never use "become" on this local action because we're on the control machine and become_user
   # is probably a user that doesn't exist!
   become: no
