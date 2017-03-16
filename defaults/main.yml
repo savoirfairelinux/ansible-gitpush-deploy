@@ -2,6 +2,9 @@
 # Path of the bare repo we push to
 gitpush_repo_path: ''
 
+# Branch of the repository that should be pushed
+gitpush_repo_branch: 'HEAD'
+
 # Path of the workdir we checkout our pushes to
 gitpush_workdir_path: ''
 
