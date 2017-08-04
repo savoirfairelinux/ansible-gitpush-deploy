@@ -17,3 +17,6 @@ gitpush_additional_params: '--force'
 # which means that its mtime will be kept in sync with our git repo's mtime.
 # Use this option if you have some kind of "touch-reload" mechanism on your app.
 gitpush_touch_path: ''
+
+# notify signal
+notify: null
