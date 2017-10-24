@@ -21,3 +21,6 @@ gitpush_touch_path: ''
 # The user to use for the gitpush SSH connection. If this is not specified, it will use
 # the ansible_user.
 gitpush_user: ''
+
+# The list of ssh_keys to use for the gitpush_ssh connection
+gitpush_ssh_keys: []

@@ -6,6 +6,15 @@
 - set_fact:
     gitpush_host: "{{ ansible_host }}"
 
+- name: Ensure that we can gitpush as the user
+  authorized_key:
+    user: "{{ gitpush_user }}"
+    state: present
+    key: "{{ item_key }}"
+  with_items: "{{ gitpush_ssh_keys }}"
+  loop_control:
+    loop_var: item_key
+
 - name: Push that repo!
   local_action: "command git --git-dir=\"{{ playbook_dir }}/{{ gitpush_local_repo_path }}\" push \"{{ gitpush_user|default(ansible_user) }}{% if gitpush_user %}@{% endif %}{{ gitpush_host }}:{{ gitpush_repo_path }}\" HEAD:master {{ gitpush_additional_params }}"
   changed_when: response.stderr != "Everything up-to-date"
