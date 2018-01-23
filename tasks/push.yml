@@ -22,6 +22,7 @@
   # We never use "become" on this local action because we're on the control machine and become_user
   # is probably a user that doesn't exist!
   become: no
+  notify: "{{ notify }}"
 
 # Steps below are to ensure that our git repo has the proper owner. If we run this role as "become",
 # the push step above will not be done as the proper user and will result in incorrect ownership of

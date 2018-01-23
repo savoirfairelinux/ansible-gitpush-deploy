@@ -18,6 +18,9 @@ gitpush_additional_params: '--force'
 # Use this option if you have some kind of "touch-reload" mechanism on your app.
 gitpush_touch_path: ''
 
+# notify signal
+notify: null
+
 # The user to use for the gitpush SSH connection. If this is not specified, it will use
 # the ansible_user.
 gitpush_user: ''
