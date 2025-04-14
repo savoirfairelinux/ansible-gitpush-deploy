@@ -1,4 +1,4 @@
 ---
-- include: packages.yml
-- include: repoconf.yml
-- include: push.yml
+- import_tasks: packages.yml
+- import_tasks: repoconf.yml
+- import_tasks: push.yml
